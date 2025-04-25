@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now | ShineXpress Auto Spa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Same CSS as index.html with adjusted logo styles */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            padding: 8px 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-accent:hover {
+            background: #c0392b;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+            font-size: 2.2rem;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column; /* Stack logo above text */
+            align-items: center;
+        }
+
+        .logo {
+            max-height: 70px; /* Increased logo size */
+            margin-bottom: 5px; /* Space between logo and text */
+        }
+
+        .logo h1 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin: 0;
+            text-align: center; /* Center the name */
+        }
+
+        .logo h1 span {
+            color: var(--secondary);
+        }
+
+        .logo p {
+            margin-left: 0; /* Remove left margin */
+            color: var(--accent);
+            font-style: italic;
+            font-size: 0.9rem;
+            text-align: center; /* Center the tagline */
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--secondary);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Booking Hero */
+        .booking-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/booking-hero.jpg');
+            height: 50vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .booking-hero-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* Booking Container */
+        .booking-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .booking-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .booking-form h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .booking-summary {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .booking-summary h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .total {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            color: var(--secondary);
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+            color: #bdc3c7;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 20px 0;
+            background: rgba(0,0,0,0.2);
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #bdc3c7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo-container {
+                margin-bottom: 15px;
+                justify-content: center;
+            }
+
+            .logo {
+                max-height: 60px; /* Adjust as needed for mobile */
+                margin-bottom: 5px;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 20px 0;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .mobile-menu {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+
+            .booking-hero h2 {
+                font-size: 2rem;
+            }
+
+            .booking-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <img src="logo.png" alt="ShineXpress Auto Spa Logo" class="logo">
+                <div class="logo-text">
+                    <h1>Shine<span>Xpress</span></h1>
+                    <p>Auto Spa</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="booking.html" class="active">Book Now</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="auth/login.html" class="auth-link">Login</a></li>
+                    <li><a href="auth/register.html" class="auth-link btn-outline">Sign Up</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="booking-hero">
+        <div class="container booking-hero-content">
+            <h2>Book Your Service</h2>
+            <p>Schedule your car care appointment online</p>
+        </div>
+    </section>
+
+    <section class="booking-form-section">
+        <div class="container">
+            <div class="booking-container">
+                <div class="booking-form">
+                    <h3>Appointment Details</h3>
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="service">Select Service</label>
+                            <select id="service" name="service" required>
+                                <option value="">-- Choose a service --</option>
+                                <option value="basic-wash">Basic Wash - UGX 30,000</option>
+                                <option value="deluxe-wash">Deluxe Wash - UGX 50,000</option>
+                                <option value="premium-wash">Premium Wash - UGX 80,000</option>
+                                <option value="basic-interior">Basic Interior - UGX 60,000</option>
+                                <option value="full-interior">Full Interior - UGX 120,000</option>
+                                <option value="ceramic-coating">Ceramic Coating - UGX 500,000</option>
+                                <option value="full-detail">Full Detailing Package - UGX 300,000</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Appointment Date</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time">Appointment Time</label>
+                            <select id="time" name="time" required>
+                                <option value="">-- Select time --</option>
+                                <option value="08:00">8:00 AM</option>
+                                <option value="09:00">9:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="13:00">1:00 PM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="15:00">3:00 PM</option>
+                                <option value="16:00">4:00 PM</option>
+                                <option value="17:00">5:00 PM</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="vehicle">Vehicle Type</label>
+                            <select id="vehicle" name="vehicle" required>
+                                <option value="">-- Select vehicle type --</option>
+                                <option value="sedan">Sedan</option>
+                                <option value="suv">SUV</option>
+                                <option value="truck">Truck</option>
+                                <option value="van">Van</option>
+                                <option value="luxury">Luxury Vehicle</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes">Special Instructions</label>
+                            <textarea id="notes" name="notes"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn">Confirm Booking</button>
+                    </form>
+                </div>
+
+                <div class="booking-summary">
+                    <h3>Order Summary</h3>
+                    <div id="summaryContent">
+                        <p>Select a service to see details and pricing</p>
+                    </div>
+                    <div class="summary-item">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">UGX 0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Tax (18%):</span>
+                        <span id="tax">UGX 0</span>
+                    </div>
+                    <div class="total">
+                        <span>Total:</span>
+                        <span id="total">UGX 0</span>
+                    </div>
+
+                    <div class="payment-options" style="margin-top: 30px;">
+                        <h4>Payment Options</h4>
+                        <p>Pay on arrival (cash or mobile money)</p>
+                        <p>Online payment coming soon</p>
+                    </div>
+
+                    <div class="cancellation-policy" style="margin-top: 30px;">
+                        <h4>Cancellation Policy</h4>
+                        <p>Please notify us at least 24 hours in advance if you need to cancel or reschedule your appointment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ShineXpress Auto Spa</h3>
+                    <p>Premium car care services in Kampala. We're dedicated to making your vehicle look its best while using eco-friendly products.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="booking.html">Book Now</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Plot 123, Kampala Road</p>
+                    <p><i class="fas fa-phone"></i> +256 712 345 678</p>
+                    <p><i class="fas fa-envelope"></i> info@shinexpress.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 ShineXpress Auto Spa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const nav = document.querySelector('nav ul');
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Booking Form Functionality
+        const serviceSelect = document.getElementById('service');
+        const summaryContent = document.getElementById('summaryContent');
+        const subtotalElement = document.getElementById('subtotal');
+        const taxElement = document.getElementById('tax');
+        const totalElement = document.getElementById('total');
+
+        const servicePrices = {
+            'basic-wash': 30000,
+            'deluxe-wash': 50000,
+            'premium-wash': 80000,
+            'basic-interior': 60000,
+            'full-interior': 120000,
+            'ceramic-coating': 500000,
+            'full-detail': 300000
+        };
+
+        const serviceDescriptions = {
+            'basic-wash': 'Exterior hand wash, wheel cleaning, and towel dry',
+            'deluxe-wash': 'Basic wash plus tire dressing, window cleaning, and wax application',
+            'premium-wash': 'Deluxe wash plus clay bar treatment and paint sealant',
+            'basic-interior': 'Vacuum, wipe down surfaces, and window cleaning',
+            'full-interior': 'Basic interior plus shampoo carpets and leather conditioning',
+            'ceramic-coating': 'Long-lasting paint protection (1-5 year options)',
+            'full-detail': 'Complete interior and exterior detailing with paint correction'
+        };
+
+        serviceSelect.addEventListener('change', function() {
+            const selectedService = this.value;
+
+            if (selectedService && servicePrices[selectedService]) {
+                const price = servicePrices[selectedService];
+                const tax = price * 0.18;
+                const total = price + tax;
+
+                summaryContent.innerHTML = `
+                    <div class="summary-item">
+                        <h4>${this.options[this.selectedIndex].text.split(' - ')[0]}</h4>
+                        <span>UGX ${price.toLocaleString()}</span>
+                    </div>
+                    <p>${serviceDescriptions[selectedService]}</p>
+                `;
+
+                subtotalElement.textContent = `UGX ${price.toLocaleString()}`;
+                taxElement.textContent = `UGX ${tax.toLocaleString()}`;
+                totalElement.textContent = `UGX ${total.toLocaleString()}`;
+            } else {
+                summaryContent.innerHTML = '<p>Select a service to see details and pricing</p>';
+                subtotalElement.textContent = 'UGX 0';
+                taxElement.textContent = 'UGX 0';
+                totalElement.textContent = 'UGX 0';
+            }
+        });
+
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Your booking has been submitted successfully! We will contact you shortly to confirm your appointment.');
+            this.reset();
+            summaryContent.innerHTML = '<p>Select a service to see details and pricing</p>';
+            subtotalElement.textContent = 'UGX 0';
+            taxElement.textContent = 'UGX 0';
+            totalElement.textContent = 'UGX 0';
+        });
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').min = today;
+    </script>
+</body>
+</html>

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | ShineXpress Auto Spa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Same CSS as index.html with added image styles */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            padding: 8px 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-accent:hover {
+            background: #c0392b;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+            font-size: 2.2rem;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .header-container {
+            display: flex;
+            flex-direction: column; /* Stack logo and navigation */
+            align-items: center; /* Center items horizontally */
+            padding: 15px 20px; /* Add padding */
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column; /* Stack image and text */
+            align-items: center;
+            margin-bottom: 10px; /* Space between logo and nav */
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px; /* Increased logo size */
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            color: var(--primary);
+            font-size: 2.2rem; /* Slightly increased font size */
+        }
+
+        .logo h1 span {
+            color: var(--secondary);
+        }
+
+        .logo p {
+            color: var(--accent);
+            font-style: italic;
+            font-size: 1rem; /* Slightly increased font size */
+            margin-top: 5px; /* Space between logo text and name */
+        }
+
+        /* Navigation */
+        nav {
+            width: 100%; /* Make nav take full width on smaller screens */
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            justify-content: center; /* Center navigation items */
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        nav ul li:first-child {
+            margin-left: 0;
+        }
+
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--secondary);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        /* Service Hero */
+        .service-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/service-hero.jpg');
+            height: 50vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center content horizontally */
+            text-align: center;
+            color: white;
+            padding-top: 100px; /* Adjust padding for fixed header */
+        }
+
+        .service-hero-content h2 {
+            font-size: 3rem; /* Increased font size for better visibility */
+            margin-bottom: 20px;
+            font-weight: bold; /* Make the name stand out */
+        }
+
+        /* Service Categories */
+        .service-categories {
+            margin-bottom: 50px;
+            padding-top: 60px; /* Adjust padding for fixed header */
+        }
+
+        .service-category {
+            margin-bottom: 40px;
+        }
+
+        .service-category h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Increased minmax to accommodate image */
+            gap: 20px;
+        }
+
+        .service-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            display: grid; /* Use grid to arrange image and text */
+            grid-template-columns: 100px 1fr; /* Fixed width for image, remaining for text */
+            gap: 15px;
+            align-items: center;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            object-fit: cover; /* Ensure image covers the area without distortion */
+        }
+
+        .service-item-content {
+            /* Content will flow in the remaining grid area */
+        }
+
+        .service-item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px; /* Reduced margin */
+        }
+
+        .service-item h4 {
+            color: var(--primary);
+            font-size: 1.1rem; /* Slightly smaller font */
+            margin-bottom: 0; /* Remove default margin */
+        }
+
+        .service-item .price {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 0.95rem; /* Slightly smaller font */
+        }
+
+        .service-item p {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            background: var(--light);
+            text-align: center;
+            padding-top: 60px; /* Adjust padding for fixed header */
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .feature i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 0 0; /* Increased padding for top */
+            margin-top: 40px; /* Add some space from the why-us section */
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            color: var(--secondary);
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+            color: #bdc3c7;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 20px 0;
+            background: rgba(0,0,0,0.2);
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #bdc3c7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 10px 20px;
+            }
+
+            .logo-container {
+                margin-bottom: 10px;
+            }
+
+            .logo {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .logo img {
+                margin-right: 0;
+                margin-bottom: 5px;
+                height: 50px;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 20px 0;
+                align-items: stretch;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .service-hero h2 {
+                font-size: 2.5rem; /* Adjust for smaller screens */
+            }
+
+            .service-list {
+                grid-template-columns: 1fr; /* Stack items on smaller screens */
+            }
+
+            .service-item {
+                grid-template-columns: 80px 1fr; /* Adjust image size on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="logo.png" alt="ShineXpress Logo"> <h1>Shine<span>Xpress</span></h1>
+                </div>
+                <p>Your Trusted Auto Spa</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="booking.html">Book Now</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="auth/login.html" class="auth-link">Login</a></li>
+                    <li><a href="auth/register.html" class="auth-link btn-outline">Sign Up</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="service-hero">
+        <div class="container service-hero-content">
+            <h2>Our Premium Services</h2>
+            <p>Professional car care tailored to your needs</p>
+        </div>
+    </section>
+
+    <section class="service-categories">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+
+            <div class="service-category">
+                <h3>Exterior Services</h3>
+                <div class="service-list">
+                    <div class="service-item">
+                        <img src="wash.jpeg" alt="Basic Wash" class="service-item-image">
+                        <div class="service-item-content">
+                            <div class="service-item-header">
+                                <h4>Basic Wash</h4>
+                                <span class="price">UGX 30,000</span>
+                            </div>
+                            <p>Exterior hand wash, wheel cleaning, and towel dry</p>
+                            <a href="booking.html" class="btn" style="margin-top: 10px; display: inline-block;">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <img src="delux.jpeg" alt="Deluxe Wash" class="service-item-image">
+                        <div class="service-item-content">
+                            <div class="service-item-header">
+                                <h4>Deluxe Wash</h4>
+                                <span class="price">UGX 50,000</span>
+                            </div>
+                            <p>Basic wash plus tire dressing, window cleaning, and wax application</p>
+                            <a href="booking.html" class="btn" style="margin-top: 10px; display: inline-block;">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <img src="premium.jpeg" alt="Premium Wash" class="service-item-image">
+                        <div class="service-item-content">
+                            <div class="service-item-header">
+                                <h4>Premium Wash</h4>
+                                <span class="price">UGX 80,000</span>
+                            </div>
+                            <p>Deluxe wash plus clay bar treatment and paint sealant</p>
+                            <a href="booking.html" class="btn" style="margin-top: 10px; display: inline-block;">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div><div class="service-category">
+                <h3>Interior Services</h3>
+                <div class="service-list">
+                    <div class="service-item">
+                        <img src="interior.jpeg" alt="Basic Interior" class="service-item-image">
+                        <div class="service-item-content">
+                            <div class="service-item-header">
+                                <h4>Basic Interior</h4>
+                                <span class="price">UGX 60,000</span>
+                            </div>
+                            <p>Vacuum, wipe down surfaces, and window cleaning</p>
+                            <a href="booking.html" class="btn" style="margin-top: 10px; display: inline-block;">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <img src="full.jpeg" alt="Full Interior" class="service-item-image">
+                        <div class="service-item-content">
+                            <div class="service-item-header">
+                                <h4>Full Interior</h4>
+                                <span class="price">UGX 120,000</span>
+                            </div>
+                            <p>Basic interior plus shampoo carpets and leather conditioning</p>
+                            <a href="booking.html" class="btn" style="margin-top: 10px; display: inline-block;">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <img src="odor.jpeg" alt="Odor Removal" class="service-item-image">
+                        <div class="service-item-content">
+                            <div class="service-item-header">
+                                <h4>Odor Removal</h4>
+                                <span class="price">UGX 90,000</span>
+                            </div>
+                            <p>Professional odor elimination treatment</p>
+                            <a href="booking.html" class="btn" style="margin-top: 10px; display: inline-block;">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-category">
+                <h3>Protection Services</h3>
+                <div class="service-list">
+                    <div class="service-item">
+                        <img src="ceramic.jpeg" alt="Ceramic Coating" class="service-item-image">
+                        <div class="service-item-content">
+                            <div class="service-item-header">
+                                <h4>Ceramic Coating</h4>
+                                <span class="price">UGX 500,000+</span>
+                            </div>
+                            <p>Long-lasting paint protection (1-5 year options)</p>
+                            <a href="booking.html" class="btn" style="margin-top: 10px; display: inline-block;">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <img src="protect.jpeg" alt="Paint Protection Film" class="service-item-image">
+                        <div class="service-item-content">
+                            <div class="service-item-header">
+                                <h4>Paint Protection Film</h4>
+                                <span class="price">UGX 1,500,000+</span>
+                            </div>
+                            <p>Clear bra protection for high-impact areas</p>
+                            <a href="booking.html" class="btn" style="margin-top: 10px; display: inline-block;">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <img src="fabric.jpeg" alt="Fabric Protection" class="service-item-image">
+                        <div class="service-item-content">
+                            <div class="service-item-header">
+                                <h4>Fabric Protection</h4>
+                                <span class="price">UGX 150,000</span>
+                            </div>
+                            <p>Stain-resistant treatment for upholstery and carpets</p>
+                            <a href="booking.html" class="btn" style="margin-top: 10px; display: inline-block;">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-category">
+                <h3>Specialty Services</h3>
+                <div class="service-list">
+                    <div class="service-item">
+                        <img src="head.jpeg" alt="Headlight Restoration" class="service-item-image">
+                        <div class="service-item-content">
+                            <div class="service-item-header">
+                                <h4>Headlight Restoration</h4>
+                                <span class="price">UGX 80,000</span>
+                            </div>
+                            <p>Remove oxidation and restore clarity to headlights</p>
+                            <a href="booking.html" class="btn" style="margin-top: 10px; display: inline-block;">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <img src="engine.jpeg" alt="Engine Bay Cleaning" class="service-item-image">
+                        <div class="service-item-content">
+                            <div class="service-item-header">
+                                <h4>Engine Bay Cleaning</h4>
+                                <span class="price">UGX 100,000</span>
+                            </div>
+                            <p>Safe degreasing and dressing of engine compartment</p>
+                            <a href="booking.html" class="btn" style="margin-top: 10px; display: inline-block;">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <img src="full detail.jpeg" alt="Full Detailing Package" class="service-item-image">
+                        <div class="service-item-content">
+                            <div class="service-item-header">
+                                <h4>Full Detailing Package</h4>
+                                <span class="price">UGX 300,000</span>
+                            </div>
+                            <p>Complete interior and exterior detailing with paint correction</p>
+                            <a href="booking.html" class="btn" style="margin-top: 10px; display: inline-block;">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our Services?</h2>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-award"></i>
+                    <h3>Quality Guarantee</h3>
+                    <p>We stand behind our work with a 100% satisfaction guarantee.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-clock"></i>
+                    <h3>Fast Service</h3>
+                    <p>Most services completed in under 2 hours with appointment.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Safe Products</h3>
+                    <p>We use only pH-balanced, eco-friendly cleaning products.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ShineXpress Auto Spa</h3>
+                    <p>Premium car care services in Kampala. We're dedicated to making your vehicle look its best while using eco-friendly products.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="booking.html">Book Now</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Plot 123, Kampala Road</p>
+                    <p><i class="fas fa-phone"></i> +256 712 345 678</p>
+                    <p><i class="fas fa-envelope"></i> info@shinexpress.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 ShineXpress Auto Spa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const nav = document.querySelector('nav ul');
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+        });
+    </script>
+</body>
+</html>
